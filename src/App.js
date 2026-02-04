@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import logo from "./logo.svg";
+
 import "./App.css";
 
 class Beer extends Component {
@@ -18,9 +18,12 @@ class Beer extends Component {
 	};
 	render() {
 		return (
+			<div className="beerFrame">
 			<div className="beerBox">
 				<div className="beerName">{this.props.beer.name}</div>
-				<img style={{ width: "30px" }} src={this.props.beer.image_url}></img>
+				<p>{this.props.beer.website_url}</p>
+				<p>{this.props.beer.brewery_type}</p>
+				{/* <img alt="pic of beer" style={{ width: "30px" }} src={this.props.beer.image_url}></img> */}
 				<p style={{ fontStyle: "italic", fontWeight: "bold" }}>
 					{this.props.beer.tagline}
 				</p>
@@ -31,6 +34,7 @@ class Beer extends Component {
 					{this.state.isLiked ? "Liked" : "Like"}
 				</button>
 				<p>{this.props.beer.description}</p>
+			</div>
 			</div>
 		);
 	}
@@ -45,7 +49,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		fetch("https://api.punkapi.com/v2/beers")
+		fetch("https://api.openbrewerydb.org/v1/breweries")
 			.then((json) => json.json())
 			.then((data) => {
 				this.setState({

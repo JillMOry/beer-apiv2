@@ -20,3 +20,7 @@ body {
 	font-weight: bolder;
 	margin-bottom: 5px;
 }
+
+.beerFrame {
+	margin: 50px auto 50px auto;
+}
